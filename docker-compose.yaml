@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  vnc:
+    image: "mattia2700/robot-control:vnc"
+    ports:
+    - "6080:6080"
+    volumes:
+    - "/Users/francesco/Il mio Drive/UNI/Magistrale/Robot Control/configs:/home/user/Desktop"
