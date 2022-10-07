@@ -25,18 +25,18 @@ RUN sudo apt-get update && \
                         robotpkg-py38-quadprog \
                         robotpkg-py38-tsid
 
-WORKDIR /home/user
-
 RUN echo "export PATH=/opt/openrobots/bin:$PATH" >> /home/user/entrypoint.sh
-RUN echo "export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig:$PKG_CONFIG_PATH" >> /home/user/entrypoint.sh
-RUN echo "export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH" >> /home/user/entrypoint.sh
+RUN echo "export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig" >> /home/user/entrypoint.sh
+RUN echo "export LD_LIBRARY_PATH=/opt/openrobots/lib" >> /home/user/entrypoint.sh
 RUN echo "export ROS_PACKAGE_PATH=/opt/openrobots/share" >> /home/user/entrypoint.sh
-RUN echo "export PYTHONPATH=$PYTHONPATH:/opt/openrobots/lib/python3.6/site-packages" >> /home/user/entrypoint.sh
-RUN echo "export PYTHONPATH=$PYTHONPATH:/home/user/Desktop/ros_ws" >> /home/user/entrypoint.sh
+RUN echo "export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:/home/user/Desktop/ros_ws" >> /home/user/entrypoint.sh
 
+RUN echo "sudo chown user:user /home/user/Desktop" >> /home/user/entrypoint.sh
 RUN echo "if [ ! -d /home/user/Desktop/ros_ws ]; then mkdir -p /home/user/Desktop/ros_ws; fi;" >> /home/user/entrypoint.sh
-RUN echo "if [ ! -f /home/user/Desktop/firefox.desktop ]; then sudo cp /usr/share/applications/firefox.desktop /home/user/Desktop/firefox.desktop && sudo chown user:user /home/user/Desktop/firefox.desktop && chmod +x /home/user/Desktop/firefox.desktop; fi;" >> /home/user/entrypoint.sh
+RUN echo "if [ ! -f /home/user/Desktop/firefox.desktop ]; then ln -s /usr/share/applications/firefox.desktop /home/user/Desktop/firefox.desktop; fi;" >> /home/user/entrypoint.sh
 
 RUN echo "docker-vnc" >> /home/user/entrypoint.sh
+
+RUN sudo chown user:user /usr/share/applications/firefox.desktop && chmod +x /usr/share/applications/firefox.desktop
 
 CMD sh /home/user/entrypoint.sh
