@@ -6,4 +6,4 @@ services:
     ports:
     - "6080:6080"
     volumes:
-    - "/Users/francesco/Il mio Drive/UNI/Magistrale/Robot Control/configs:/home/user/Desktop"
+    - "/Users/francesco/Drive (francesco.meneghin.fm@gmail.com)/UNI/Magistrale/Robot Control/configs:/home/user/Desktop"
