@@ -26,10 +26,11 @@ RUN sudo apt-get update && \
                         robotpkg-py38-tsid
 
 RUN echo "export PATH=/opt/openrobots/bin:$PATH" >> /home/user/entrypoint.sh
+RUN echo "export PATH=/opt/openrobots/bin:$PATH" >> /home/user/entrypoint.sh
 RUN echo "export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig" >> /home/user/entrypoint.sh
 RUN echo "export LD_LIBRARY_PATH=/opt/openrobots/lib" >> /home/user/entrypoint.sh
 RUN echo "export ROS_PACKAGE_PATH=/opt/openrobots/share" >> /home/user/entrypoint.sh
-RUN echo "export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:/home/user/Desktop" >> /home/user/entrypoint.sh
+RUN echo "export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:/home/user/Desktop/orc" >> /home/user/entrypoint.sh
 
 RUN echo "sudo chown user:user /home/user/Desktop" >> /home/user/entrypoint.sh
 RUN echo "if [ ! -d /home/user/Desktop/orc ]; then mkdir -p /home/user/Desktop/orc; fi;" >> /home/user/entrypoint.sh
